@@ -99,6 +99,7 @@ var elementToFullScreen = document.documentElement;
 
 /* View in fullscreen */
 function openFullscreen(elementToFullScreen) {
+  // Default browsers
   if (elementToFullScreen.requestFullscreen) {
     elementToFullScreen.requestFullscreen();
   } else if (elementToFullScreen.webkitRequestFullscreen) {
@@ -112,6 +113,7 @@ function openFullscreen(elementToFullScreen) {
 
 /* Close fullscreen */
 function closeFullscreen() {
+  // Default browsers
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.webkitExitFullscreen) {
@@ -126,9 +128,7 @@ function closeFullscreen() {
 let fullscreen = false;
 
 function toggleFullscreen() {
-  if (!fullscreen) openFullscreen(player);
-  else closeFullscreen();
-
+  !fullscreen ? openFullscreen(player) : closeFullscreen();
   fullscreen = !fullscreen;
 }
 
