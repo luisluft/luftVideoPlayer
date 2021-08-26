@@ -278,7 +278,9 @@ select > option {
   }
 
   .video-fullscreen {
-    height: 97.5vh;
+    /* height: 97.5vh; */
+    height: auto;
+    width: 97.5vw;
     border-radius: 0;
   }
 }
