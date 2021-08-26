@@ -108,7 +108,6 @@ function openFullscreen(elementToFullScreen) {
     /* IE11 */
     elementToFullScreen.msRequestFullscreen();
   }
-  video.classList.add("video-fullscreen");
 }
 
 /* Close fullscreen */
@@ -122,7 +121,6 @@ function closeFullscreen() {
     /* IE11 */
     document.msExitFullscreen();
   }
-  video.classList.remove("video-fullscreen");
 }
 
 let fullscreen = false;
@@ -132,6 +130,18 @@ function toggleFullscreen() {
   else closeFullscreen();
 
   fullscreen = !fullscreen;
+}
+
+function updateFullscreenState() {
+  // Detect Full Screen state
+  fullscreen =
+    document.fullscreenElement /* Standard syntax */ ||
+    document.webkitFullscreenElement /* Safari and Opera syntax */ ||
+    document.msFullscreenElement /* IE11 syntax */
+      ? true
+      : false;
+  // Update Video Styling
+  fullscreen ? video.classList.add("video-fullscreen") : video.classList.remove("video-fullscreen");
 }
 
 // Event listeners
@@ -145,3 +155,4 @@ volumeRange.addEventListener("click", changeVolume);
 volumeIcon.addEventListener("click", toggleMute);
 speed.addEventListener("change", changeSpeed);
 fullscreenButton.addEventListener("click", toggleFullscreen);
+document.addEventListener("fullscreenchange", updateFullscreenState);
