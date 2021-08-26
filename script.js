@@ -1,3 +1,4 @@
+const speed = document.querySelector(".player-speed");
 const video = document.querySelector("video");
 const progressRange = document.querySelector(".progress-range");
 const progressBar = document.querySelector(".progress-bar");
@@ -88,6 +89,10 @@ function toggleMute() {
 
 // Change Playback Speed -------------------- //
 
+function changeSpeed() {
+  video.playbackRate = speed.value;
+}
+
 // Fullscreen ------------------------------- //
 
 // Event listeners
@@ -99,3 +104,4 @@ video.addEventListener("canplay", updateProgress);
 progressRange.addEventListener("click", setProgress);
 volumeRange.addEventListener("click", changeVolume);
 volumeIcon.addEventListener("click", toggleMute);
+speed.addEventListener("change", changeSpeed);
